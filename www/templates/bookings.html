@@ -1,0 +1,98 @@
+<ion-view view-title="My Rides">
+	<ion-content>
+
+	<script id="search-modal.html" type="text/ng-template">
+		<ion-modal-view>
+			<ion-header-bar>
+				<h1 class="title">Select Your Date</h1>
+				<div class="buttons">
+					<button class="button button-clear" ng-click="closeSearchModal()">Close</button>
+				</div>
+			</ion-header-bar>
+			<ion-content>
+				<ion-radio 	ng-repeat="item in listOfDates" 
+							ng-value="item.date"
+							ng-model="searchCriteria.selectedDate"> {{item.date}}</ion-radio>
+			</ion-content>
+		</ion-modal-view>
+	</script>
+	
+	<div class="error-panel" ng-show="error">
+		{{error}}
+	</div>
+	<!--<ion-scroll direction="y" scrollbar-x="false" scrollbar-y="false" locking="true" style="height:60px;">
+			<div ng-repeat="item in results">
+				<p style="font-size:22px; text-align: center;">{{item.date}}</p>
+			</div>
+		</ion-scroll> 
+		-->
+		<div class="button-bar">
+			<a class="button" ng-class="{'icon-right ion-checkmark': bookedToggle}" ng-click="showBooked()" style="font-size:14px;">
+				Show Booked
+			</a>
+			<a class="button" ng-click="openSearchModal()" style="font-size:14px;">
+			<span ng-show="searchCriteria.selectedDate">{{searchCriteria.selectedDate}}</span>
+			<span ng-show="!searchCriteria.selectedDate">Search by Date </span>
+			</a>
+			<!--<a class="button" ng-click="openSearchRideModal()">Search</a> -->
+			<a class="button" ng-click="go('app/searchride')" style="font-size:14px;">Search a Ride</a> 
+  		</div>
+	
+		<ul class="list" ng-show="data.locationFrom">
+			<li class="item icon ion-ios-location" style="font-size:16px; padding-top:2px; padding-bottom:2px;">
+				{{data.locationFrom}}
+			</li>
+			<li class="item icon ion-ios-location" style="font-size:16px; padding-top:2px; padding-bottom:2px;">
+				{{data.locationTo}}
+			</li>
+		</ul>
+		<div class="item item-divider" ng-show="!bookedToggle">
+			Search results
+		</div>
+		<div class="item item-divider" ng-show="bookedToggle">
+			Booked rides
+		</div>		
+
+		<!--<div>
+			{{userInfo.userName}}, aud:{{userInfo.profile.aud}}, isAuthenticated:{{userInfo.isAuthenticated}}
+		</div> -->
+		
+		<!--<ion-list >
+			<ion-item class="item-full no-divider" ng-repeat="product in products">
+				{{product.Name}}
+			</ion-item>
+		</ion-list> -->
+		
+
+			<div class="card" ng-repeat="item in rides | filter: { booked: bookedToggle}">
+				<div class="item item-avatar" style="background-color:#F1EEEA;">
+					<img src="img\icon_profile.png" ng-click="openRiderProfileModal(item.id)"> </img>
+					<h2>{{item.name}} [TODO: Bind driver name]
+					<span class="trip-detail icon ion-ios-information icon-size-28" ng-click="go('app/ridedetail/{{item.id}}')"></span>
+					</h2>
+				</div>
+				<div class="item item-text-wrap location-text">
+					{{item.locationFrom}}
+					<hr>
+					{{item.locationTo}}
+				</div>
+				<div class="item">
+					<div class="row">
+						<div class="col">
+							{{item.time | date:'h:mm a'}}
+						</div>
+						<div class="col">
+						</div>
+						<div class="col">
+						</div>						
+						<div class="col">
+							{{item.seats}}&nbsp;seats
+						</div>
+					</div>				  
+				</div>				
+			</div>	
+	</ion-content>
+
+</ion-view>
+
+

@@ -1,0 +1,53 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">{{profileTitle}}</h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="closeProfileModal()">Close</button>
+		</div>
+	</ion-header-bar>
+  
+	<ion-content>
+    
+		<div class="list">
+			<div class="item item-avatar">
+				<img ng-src="data:image/png;base64,{{user.photo}}">
+				<h2>Name </h2>
+				<p>{{user.name}}</p>
+			</div>
+			<div class="item">
+				<h2>Email </h2>
+				<p>{{user.email}}</p>
+			</div>
+			<div class="item">
+				<h2>Mobile </h2>
+				<p>{{user.mobile}}</p>
+			</div>
+			<div class="item">
+				<h2>Address </h2>
+				<p>{{user.address}}</p>
+			</div>
+			<div class="item" ng-if='canShow'>
+				<h2>Car </h2>
+				<p>{{user.car}}
+			</div>
+			<div class="item" ng-if='canShow'>
+				<h2>Car Plate Number </h2>
+				<p>{{user.carPlateNumber}}</p>
+			</div>	
+			<div class="item" ng-if='canShow'>
+				<h2>Color </h2>
+				<p>{{user.carColor}}</p>
+			</div>	
+			<div class="item" ng-if='canShow'>
+				<h2>Description about the car </h2>
+				<p style="white-space:normal;">{{user.carDesc}}</p>
+			</div>
+
+		</div>
+
+  </ion-content>
+  
+</ion-modal-view>  
+  
+<!--<ion-view view-title="Driver Profile">
+</ion-view> -->

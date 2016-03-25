@@ -1,0 +1,34 @@
+<ion-view view-title="Activate">
+
+	<ion-header-bar>
+		<div class="buttons">
+			<button class="button ion-chevron-left" style="font-size: 18px" ng-click="gotoSignIn()"></button>
+		</div>
+	
+		<h1 class="title">Activation</h1>
+	</ion-header-bar>
+
+	
+	<ion-content scroll="false">
+
+	  <div class="error-panel" ng-show="error">
+		{{error}}
+	  </div>
+	
+	  <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="data.username" placeholder="Your Azure AD account">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Token</span>
+          <input type="password" ng-model="data.token" placeholder="Secret number provided by HR">
+        </label>
+        <label class="item">
+		  <button class="button button-block button-positive" ng-click="activate(data)"> I want to access NOW! </button>
+        </label>
+      </div>
+	  
+    
+	</ion-content>
+</ion-view>

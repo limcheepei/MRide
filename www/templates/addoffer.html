@@ -1,0 +1,115 @@
+<ion-view view-title="Create a Ride">
+  <ion-content>
+		
+	<script id="searchFromModal.html" type="text/ng-template">
+		<ion-modal-view>
+			<ion-header-bar>
+				<h1 class="title">Starting point</h1>
+				<div class="buttons">
+					<button class="button button-clear" ng-click="closeSearchFromModal()">Close</button>
+				</div>
+			</ion-header-bar>
+			<ion-content>
+				<ion-google-place placeholder="From" ng-model="data.locationFrom" required name="addressFrom" location-changed="fromLocationChanged"></ion-google-place>
+			</ion-content>
+		</ion-modal-view>
+	</script>	
+	
+	
+	<script id="searchToModal.html" type="text/ng-template">
+		<ion-modal-view>
+			<ion-header-bar>
+				<h1 class="title">Destination</h1>
+				<div class="buttons">
+					<button class="button button-clear" ng-click="closeSearchToModal()">Close</button>
+				</div>
+			</ion-header-bar>
+			<ion-content>
+				<ion-google-place placeholder="To" ng-model="data.locationTo" required name="addressTo" location-changed="toLocationChanged"/></ion-google-place>
+			</ion-content>
+		</ion-modal-view>
+	</script>
+
+	<div class="error-panel" ng-show="error">
+		{{error}}
+	</div>
+	
+	<form novalidate name="addOfferForm" ng-submit="createTrip(addOfferForm)">
+		<div class="list">
+			<label class="item item-input" ng-class="{ 'has-errors' : addOfferForm.locationFrom.$invalid && addOfferForm.locationFrom.$touched, 'no-errors' : addOfferForm.locationFrom.$valid}">
+				<i class="icon ion-android-pin placeholder-icon"></i>
+				<input type="text" placeholder="From" name="locationFrom" ng-model="data.locationFrom" ng-click="openSearchFromModal()" ng-maxlength="200" required>
+			</label>
+			<div class="error-container" ng-show="addOfferForm.locationFrom.$error && addOfferForm.locationFrom.$touched || submitted" ng-messages="addOfferForm.locationFrom.$error">
+				<div class="error" ng-message="maxlength">
+					<i class="ion-information-circled"></i> 
+					Maximum length of this field is 200 characters!
+				</div>				
+				<div ng-messages-include="error-list.html"></div>
+            </div>
+			
+			<label class="item item-input" ng-class="{ 'has-errors' : addOfferForm.locationTo.$invalid && addOfferForm.locationTo.$touched, 'no-errors' : addOfferForm.locationTo.$valid}">
+				<i class="icon ion-android-pin placeholder-icon"></i>
+				<input type="text" placeholder="To" name="locationTo" ng-model="data.locationTo" ng-click="openSearchToModal()" ng-maxlength="200" required>
+			</label>		  
+			<div class="error-container" ng-show="addOfferForm.locationTo.$error && addOfferForm.locationTo.$touched || submitted" ng-messages="addOfferForm.locationTo.$error">
+				<div class="error" ng-message="maxlength">
+					<i class="ion-information-circled"></i> 
+					Maximum length of this field is 200 characters!
+				</div>				
+				<div ng-messages-include="error-list.html"></div>
+            </div>			
+			
+			<label class="item item-input">
+				<i class="icon ion-calendar placeholder-icon"></i>
+				<input type="date" placeholder="Date" ng-model="data.date">
+			</label>
+			<label class="item item-input">
+				<i class="icon ion-calendar placeholder-icon"></i>
+				<input type="time" placeholder="Time" ng-model="data.time">
+			</label>
+
+			<label class="item item-input" ng-class="{ 'has-errors' : addOfferForm.seats.$invalid, 'no-errors' : addOfferForm.seats.$valid}">
+				<i class="icon ion-person-stalker placeholder-icon"></i>
+				<input type="number" placeholder="Available Seats" name="seats" ng-model="data.seats" ng-pattern="/^(\d)+$/" min="1" max="10" required>
+			</label>		
+			<div class="error-container" ng-show="addOfferForm.seats.$error || submitted" ng-messages="addOfferForm.seats.$error">
+				<div class="error" ng-message="pattern">
+					<i class="ion-information-circled"></i> 
+					Please enter a number.
+				</div>
+				<div class="error" ng-message="min, max">
+					<i class="ion-information-circled"></i> 
+					Number of seats must be between 1 to 10.
+				</div>
+				<div ng-messages-include="error-list.html"></div>				
+            </div>
+			
+			<label class="item item-input">
+				<i class="icon ion-clipboard placeholder-icon"></i>
+				<input type="text" placeholder="Description" ng-model="data.carDesc">
+			</label>
+			<label class="item item-input">
+				<i class="icon ion-android-car placeholder-icon"></i>
+				<div class="row">
+					<div class="col">
+					{{data.car}}
+					</div>
+					<div class="col">
+					{{data.carPlateNumber}}
+					</div>
+					<div class="col">
+					{{data.carColor}}
+					</div>
+				</div>
+			</label>
+		</div>	
+		
+		<div class="button-bar">
+			<!--<a class="button" ng-click="createTrip(data)">Create</a> -->
+			<input type="submit" class="button"  value="Create" />
+		</div>	
+	</form>
+
+  </ion-content>
+</ion-view>

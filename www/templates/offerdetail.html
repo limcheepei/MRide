@@ -1,0 +1,90 @@
+<ion-view view-title="Offer Detail">
+	<ion-content>
+    
+		<div class="card">
+			<div class="item item-divider">
+				Trip
+				<!--<a class="icon ion-edit" style="float:right;" href="#/app/editoffer/{{data.id}}"></a> -->
+			</div>
+
+			<ul class="list" ng-show="data.locationFrom" style="background-color:#F1EEEA; padding:15px; margin-bottom:0px;">
+				<li class="item " style="font-size:16px; padding-top:2px; padding-bottom:2px; background-color:#F1EEEA">
+					<span class="icon ion-ios-location icon-size-20"></span>
+					{{data.locationFrom}}
+				</li>
+				<li class="item" style="font-size:16px; padding-top:2px; padding-bottom:2px; background-color:#F1EEEA">
+					<span class="icon ion-ios-location icon-size-20"></span>
+					{{data.locationTo}}
+				</li>
+			</ul>	
+			<div class="row" style="background-color:#F1EEEA; border-top:solid lightgrey 1px;">	
+				<div class="col">
+					{{data.date | date:'dd-MMM-yyyy'}}
+				</div>
+				<div class="col">
+					{{data.time | date:'h:mm a'}}
+				</div>			
+				<div class="col">
+					{{data.seatsAvailable}} &nbsp; seats
+				</div>
+			</div>
+
+		</div>	
+		
+		<div class="card">
+			<div class="item item-divider">
+				<span class="icon ion-ios-person icon-size-28"></span>
+				Passengers
+			</div>
+			<!--
+			[TODO]: Accept/Reject button, status of each rider's request. Sort by pending, accept, cancel. <br>
+			[TODO]: Click on the rider's photo to view the profile
+			-->
+			<ion-list can-swipe="true" >
+				<ion-item class="card item item-avatar"  ng-repeat="item in riders" style="background-color:#F1EEEA;">
+					
+					<img src="data:image/png;base64,{{item.photo}}" ng-click="openRiderProfileModal($index)"> </img>
+					<p>
+						<h2 style="display:inline">{{item.name}}</h2>
+						<span ng-hide="item.status!='accept'" style="margin-left:15px" class="ion-checkmark-circled"></span>
+						<span ng-hide="item.status!='reject'" style="margin-left:15px" class="ion-close-circled"></span>
+						<span ng-hide="item.status!='pending'" style="margin-left:15px" class="ion-help-circled"></span>
+					</p>
+					<p>
+						{{item.mobile}}
+						</br>
+						{{item.address}}
+					</p>
+					<p>
+						{{item.desc}}
+					</p>
+					<!--
+					<p>
+						{{item.status}}
+					</p>
+					<p>
+						<a class="button" ng-click="updateRiderStatus({{$index}},true)" ng-disabled="item.status=='accept'">Accept</a>
+						<a class="button" ng-click="updateRiderStatus({{$index}},false)" ng-disabled="item.status=='reject'">Reject</a>
+					</p>
+					<div ng-hide="item.status=='pending'">
+						You have {{(item.status=='accept')?'accepted':'rejected'}} this riders
+					</div>
+
+					<div ng-hide="item.status!='pending'">
+						The rider is pending for approval
+					</div>
+					-->
+					<ion-option-button ng-disabled="item.status=='accept'" class="ion-checkmark-circled" ng-click="updateRiderStatus({{$index}},true)" style="font-size:34px;background-color:#EEE">
+                	</ion-option-button>
+    				<ion-option-button ng-disabled="item.status=='reject'" class="ion-close-circled" ng-click="updateRiderStatus({{$index}},false)" style="font-size:34px;background-color:#EEE">
+    				</ion-option-button>
+				</ion-item>	
+			</ion-list>	
+		</div>
+		
+		<div class="button-bar">
+			<a class="button">Cancel this trip</a>
+		</div>		
+		
+	</ion-content>
+</ion-view>

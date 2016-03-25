@@ -1,0 +1,45 @@
+<ion-view view-title="Driver Profile">
+	<ion-content class="scroll-content ionic-scroll overflow-scroll  has-header" overflow-scroll="true" padding="false">
+    
+
+<div class="list">
+	<div class="item">
+		<h2>Name </h2>
+		<p>{{profile.name}}</p>
+	</div>
+	<div class="item">
+		<h2>Email </h2>
+		<p>{{profile.email}}</p>
+	</div>
+	<div class="item">
+		<h2>Mobile </h2>
+		<p>{{profile.mobile}}</p>
+	</div>
+	<div class="item">
+		<h2>Address </h2>
+		<p>{{profile.address}}</p>
+	</div>
+	<div class="item">
+		<h2>Car </h2>
+		<p>{{profile.cartype}}</p>
+	</div>
+	<div class="item">
+		<h2>Car Plate Number </h2>
+		<p>{{profile.carplate}}</p>
+	</div>	
+	<div class="item">
+		<h2>Seats </h2>
+		<p>{{profile.capacity}}</p>
+	</div>	
+	<div class="item">
+		<h2>Color </h2>
+		<p>{{profile.carcolor}}</p>
+	</div>	
+	<div class="item">
+		<h2>Description about the car </h2>
+		<p style="white-space:normal;">{{profile.cardesc}}</p>
+	</div>
+</div>
+
+  </ion-content>
+</ion-view>

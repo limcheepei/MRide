@@ -1,0 +1,34 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Rider</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeRiderProfileModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  
+	<ion-content >
+    
+		<div class="list">
+			<div class="item item-avatar">
+				<img src="img\icon_profile.png">
+				<h2>Name </h2>
+				<p>{{riderProfile.name}}</p>
+			</div>
+			<div class="item">
+				<h2>Email </h2>
+				<p>{{riderProfile.email}}</p>
+			</div>
+			<div class="item">
+				<h2>Mobile </h2>
+				<p>{{riderProfile.mobile}}</p>
+			</div>
+			<div class="item">
+				<h2>Address </h2>
+				<p>{{riderProfile.address}}</p>
+			</div>
+		</div>
+
+  </ion-content>
+  
+</ion-modal-view>  
+  

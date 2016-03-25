@@ -1,0 +1,55 @@
+<ion-view>
+  <!--<ion-header-bar>
+    <h1 class="title"></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar> -->
+  <ion-content scroll="false" style="background-color:#009652; margin:0px; padding:0px;">
+		
+	<div class="error-panel" ng-show="error">
+		{{error}}
+	</div>
+	
+	<section class = "home-container">
+ 
+	<div class = "row header" style="padding:0px;">
+ 
+		<div class = "col text-center home-logo">
+              
+        </div>
+ 
+    </div>
+ 
+ <!--
+	Ref: http://www.joshmorony.com/how-to-create-complex-layouts-in-ionic/
+ -->
+
+	<div class = "row icon-row">
+ 
+		<div class = "col text-center">
+			<button class="button button-stable button-large icon-left ion-key login-button" ng-click="signIn()"> Sign in </button>
+        </div>
+ 
+    </div>
+ 
+    </section>		
+	
+      
+	  <!--<div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+		  <button class="button button-block button-positive" ng-click="signIn(loginData)"> Sign in </button>
+        </label>
+      </div>
+	  -->
+    
+  </ion-content>
+</ion-view>

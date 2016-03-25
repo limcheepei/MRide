@@ -1,0 +1,56 @@
+<ion-view view-title="My Offers">
+
+	<ion-nav-buttons side="secondary">
+      <button class="button ion-plus icon-size-28"  ng-click="go('/app/addoffer')">
+        
+      </button>
+    </ion-nav-buttons>
+
+	<ion-content>
+
+		<div class="error-panel" ng-show="error">
+			{{error}}
+		</div>	
+	
+		<div class="card">
+			<div class="item item-avatar" style="background-color:#F1EEEA" ng-click="openProfileModal()">
+				<img ng-src="data:image/png;base64,{{profile.photo}}">
+				<h2>{{profile.name}}</h2>
+				<p>
+					View your profile
+				</p>
+			</div>
+		</div>
+
+				<div class="card" ng-repeat="item in offers">
+				  <div class="item">
+					<h2>{{item.date | date:'dd-MMM-yyyy'}}
+						<span class="trip-detail icon ion-ios-information icon-size-28" ng-click="go('app/offers/{{item.id}}')"></span>
+					</h2>
+				  </div>
+				  <div class="item item-text-wrap location-text">
+					{{item.locationFrom}}
+					<hr>
+					{{item.locationTo}}
+				  </div>
+				  <div class="item">
+					<div class="row">
+						<div class="col">
+							{{item.time | date:'h:mm a'}}
+						</div>
+						<div class="col">
+						</div>
+						<div class="col">
+						</div>
+						<div class="col">
+							{{item.seatsAvailable}}&nbsp;seats
+							<span class="badge badge-assertive" ng-show="item.hasPendingRequests">3</span>
+						</div>
+					</div>
+				  </div>
+				</div>	
+	</ion-content>
+
+</ion-view>
+
+

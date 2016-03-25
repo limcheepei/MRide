@@ -1,0 +1,56 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+
+	<ion-tabs class="tabs-icon-top">
+		<ion-tab title="Bookings" icon-off="ion-search" icon-on="ion-search" href="#/app/bookings">
+			<ion-nav-view name="tab-search"></ion-nav-view>
+		</ion-tab>
+
+		<ion-tab title="Offers" icon-off="ion-ios-glasses" icon-on="ion-ios-glasses" href="#/app/offers">
+			<ion-nav-view name="tab-offers"></ion-nav-view>
+		</ion-tab>
+	</ion-tabs>
+	
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" ng-controller="SideMenuCtrl">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">MRide</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+		<ion-item>
+			<div class="card">
+				<div class="item item-avatar" style="background-color:#F1EEEA" ng-click="openProfileModal()">
+					<img ng-src="data:image/png;base64,{{profile.photo}}">
+					<h2>{{profile.name}}</h2>
+					<p>
+						View your profile
+					</p>
+				</div>
+			</div>
+		</div>
+		</ion-item>
+        <ion-item menu-close href="#/app/bookings">
+          My Rides
+        </ion-item>
+        <ion-item menu-close href="#/app/offers">
+          My Offers
+        </ion-item>
+        <ion-item menu-close ng-click="logout()">
+          Logout
+        </ion-item>		
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

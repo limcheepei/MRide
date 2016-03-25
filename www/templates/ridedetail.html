@@ -1,0 +1,74 @@
+<ion-view view-title="Ride Detail">
+	<ion-content>
+    
+		<div class="card">
+			<div class="item item-divider">
+				Trip
+			</div>
+
+			<ul class="list" ng-show="data.from" style="background-color:#F1EEEA; padding:15px;">
+				<li class="item" style="font-size:16px; padding-top:2px; padding-bottom:2px; background-color:#F1EEEA">
+					<span class="icon ion-ios-location icon-size-20"></span>
+					{{data.from}}
+				</li>
+				<li class="item" style="font-size:16px; padding-top:2px; padding-bottom:2px; background-color:#F1EEEA">
+					<span class="icon ion-ios-location icon-size-20"></span>
+					{{data.to}}
+				</li>
+			</ul>			
+
+		</div>	
+		<div class="card">
+			<div class="item item-divider">
+				<span class="icon ion-android-car icon-size-28"></span>
+				Driver
+			</div>
+			<div class="item item-avatar" style="background-color:#F1EEEA">
+				<img src="img\icon_profile.png"  ng-click="openDriverProfileModal()"></img>
+				<h2>{{profile.name}}</h2>
+				<p>
+					{{profile.mobile}}
+				</p>
+			</div>
+			<div class="row car-info">
+				<div class="col-50"><b>Car</b><p>{{profile.car}}</p></div>
+				<div class="col-50"><b>Plate Number</b><p>{{profile.carPlateNumber}}	</p></div>
+			</div>
+			<div class="row car-info">
+				<div class="col-50"><b>Color</b><p>{{profile.carColor}}</p></div>
+				<div class="col-50"><b>Seats</b><p>4	</p></div>
+			</div>
+			<div class="row car-info">
+				<div class="col-100"><b>Description</b><p>{{profile.carDesc}}</p></div>
+			</div>
+		</div>	
+		
+		<div class="card">
+			<div class="item item-divider">
+				<span class="icon ion-ios-person icon-size-28"></span>
+				Passengers
+			</div>
+			
+			<div class="card" ng-repeat="item in riders">
+				<div class="item item-avatar" style="background-color:#F1EEEA;">
+					<img src="img\icon_profile.png" ng-click="openRiderProfileModal(item.id)"> </img>
+					<h2>{{item.name}}</h2>
+					<p>
+						{{item.mobile}}
+						</br>
+						{{item.address}}
+					</p>
+					<p>
+						{{item.desc}}
+					</p>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="button-bar">
+			<a class="button">Book</a>
+			<a class="button">Cancel</a>
+		</div>		
+		
+	</ion-content>
+</ion-view>
